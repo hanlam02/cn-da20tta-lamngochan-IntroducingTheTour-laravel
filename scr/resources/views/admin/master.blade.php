@@ -24,6 +24,9 @@
   <link rel="stylesheet" href="{{asset('assets')}}/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="{{asset('assets')}}/plugins/summernote/summernote-bs4.css">
+  <link rel="stylesheet" href="{{asset('assets')}}/css/styletour.css">
+  {{-- <script src="{{asset('assets')}}/ckeditor5-build-classic-40.1.0/ckeditor5-build-classic/ckeditor.js"></script> --}}
+  <script src="http://cdn.ckeditor.com/4.22.1/full/ckeditor.js"></script>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -41,6 +44,9 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
+      <h1>
+        @yield('title-page')
+      </h1>
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -106,5 +112,7 @@
 <script src="{{asset('assets')}}/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('assets')}}/dist/js/demo.js"></script>
+
+@yield('custom-js')
 </body>
 </html>

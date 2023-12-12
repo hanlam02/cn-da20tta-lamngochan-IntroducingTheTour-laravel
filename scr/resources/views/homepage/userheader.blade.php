@@ -11,62 +11,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link href="{{asset('assets')}}/css/style">
+  <link rel="stylesheet" href="{{asset('assets')}}/css/styleapp.css">
   <style>
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-    }
-    
-    /* Add a gray background color and some padding to the footer */
-    footer {
-      background-color: #f2f2f2;
-      padding: 25px;
-    }
-    .nav1{
-      display:flex; 
-    }
-    .footer-distributed .footer-center{
-	width: 35%;
-}
-
-.footer-distributed .footer-center i{
-	background-color:  #383737;
-	color: #ffffff;
-	font-size: 20px;
-	width: 38px;
-	height: 38px;
-	border-radius: 50%;
-	text-align: center;
-	line-height: 42px;
-	margin: 10px 15px;
-	vertical-align: middle;
-}
-
-.footer-distributed .footer-center i.fa-envelope{
-	font-size: 17px;
-	line-height: 38px;
-}
-
-.footer-distributed .footer-center p{
-	display: inline-block;
-	color:black;
-  font-weight:400;
-	vertical-align: middle;
-	margin:0;
-}
-
-.footer-distributed .footer-center p span{
-	display:block;
-	font-weight: normal;
-	font-size:14px;
-	line-height:2;
-}
-
-.footer-distributed .footer-center p a{
-	color:  lightseagreen;
-	text-decoration: none;;
-}
   </style>
 </head>
 <body>
@@ -82,13 +28,23 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Tour</a></li>
+        <li ><a href="#">Home</a></li>
+        <li>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tour
+            <ul class="dropdown-menu">
+              <li><a href="#">Miền trung</a></li>
+              <li><a href="#">Miền Bắc</a></li>
+              <li><a href="#">Miền Nam</a></li>
+              <li><a href="#">Miền Tây</a></li>
+              <li><a href="#">Tất cả</a></li>
+            </ul>
+          </a>
+        </li>
         <li><a href="#">Liên hệ</a></li>
         <li><a href="#">Giới thiệu</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"> Đăng Nhập</a></li>
+        <li><a href="{{route('login.login')}}"> Đăng Nhập</a></li>
       </ul>
     </div>
   </div>
