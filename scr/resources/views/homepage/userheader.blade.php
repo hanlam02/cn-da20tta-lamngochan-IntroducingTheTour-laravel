@@ -13,11 +13,12 @@
   <link href="{{asset('assets')}}/css/style">
   <link rel="stylesheet" href="{{asset('assets')}}/css/styleapp.css">
   <style>
+
   </style>
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse" style="background-color: #0064d2; font-size: 18px">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -27,24 +28,31 @@
       </button>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li ><a href="#">Home</a></li>
+      <ul class="nav navbar-nav" style="margin-top: 10px">
+        <li ><a href="{{route('homepage')}}" style="color: white" >Home</a></li>
         <li>
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tour
+          <a href="{{route('interfacetour')}}" class="dropdown-toggle" data-toggle="dropdown" style="color: white">Tour
             <ul class="dropdown-menu">
-              <li><a href="#">Miền trung</a></li>
-              <li><a href="#">Miền Bắc</a></li>
-              <li><a href="#">Miền Nam</a></li>
-              <li><a href="#">Miền Tây</a></li>
-              <li><a href="#">Tất cả</a></li>
+              <li><a href="{{ route('interfacetour', ['domain' => 'Miền Trung']) }}">Miền Trung</a></li>
+              <li><a href="{{ route('interfacetour', ['domain' => 'Miền Bắc']) }}">Miền Bắc</a></li>
+              <li><a href="{{ route('interfacetour', ['domain' => 'Miền Nam']) }}">Miền Nam</a></li>
+              <li><a href="{{route('interfacetour')}}">Tất cả</a></li>
             </ul>
           </a>
         </li>
-        <li><a href="#">Liên hệ</a></li>
-        <li><a href="#">Giới thiệu</a></li>
+        <li><a href="#" style="color: white">Liên hệ</a></li>
+        <li><a href="#" style="color: white">Giới thiệu</a></li>
+        <li><a href="{{route('seach')}}" style="color: white">Tra cứu</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="{{route('login.login')}}"> Đăng Nhập</a></li>
+        <li><a > <div class="box-tools" style="width: 300px;">
+          <form action="{{ route('detail.search') }}" method="get" class="input-group">
+            <input type="text" name="search" class="form-control pull-right" placeholder="Search">
+            <div class="input-group-btn">
+                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+            </div>
+        </form>
+        </div></a></li>
       </ul>
     </div>
   </div>

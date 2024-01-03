@@ -10,6 +10,7 @@ use App\Models\imgtour;
 use App\Http\Requests\Category\StoreCategoryRequesttour;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 class CategoryController extends Controller
 
 {
@@ -24,6 +25,18 @@ class CategoryController extends Controller
         return view('admin.category.tourmanagement', compact('tour'));
         
     }
+
+        public function searcht(Request $request)
+        {
+            $search = $request->input('search');
+
+            $tour = Category::where('nametour', 'like', '%' . $search . '%')
+                ->orWhere('domain', 'like', '%' . $search . '%')
+                // ->orWhere('region', 'like', '%' . $search . '%')
+                ->paginate(5);
+
+            return view('admin.category.tourmanagement', compact('tour'));
+        }
 
     /**
      * Show the form for creating a new resource.
@@ -67,7 +80,11 @@ class CategoryController extends Controller
            // $tour->sulg = $validatedData['sulg'] ?? null;
             $tours->description = $validatedData['description'];
             $tours->stock = $request->stock == true ? '1':'0';
+            $tours->startdate = Carbon::createFromFormat('Y-m-d\TH:i', $validatedData['startdate']);
+            $tours->enddate = Carbon::createFromFormat('Y-m-d\TH:i', $validatedData['enddate']);
+   // Chuyển đổi thành chuỗi ngày tháng
             // Check and handle image upload
+            
             if ($request->hasFile('image')) {
                 $image = $request->file('image');
                 // Kiểm tra lỗi khi tải lên
@@ -104,14 +121,15 @@ class CategoryController extends Controller
                     ]);
                 }
             }
-            DB::commit();
-      // dd($tour);
+            // dd($tour);
+            // DB::commit();
+            // dd($tours);
             $tours->save();
 
-
+           
             // Save the record to the database
            
-            //dd($tour);
+            
             // Redirect with success message
             return redirect()->route('tour.index')->with('success', 'Thêm mới thành công');
         } catch (\Exception $e) {
@@ -165,8 +183,8 @@ class CategoryController extends Controller
     $validatedData = $request->validate([
         'nametour' => ['required', 'string'],
         'image' => ['nullable', 'mimes:jpg,jpeg,png'],
-        'price' => ['required', 'string'],
-        'sale_price' => ['nullable', 'string'],
+        'price' => ['required', 'int'],
+        'sale_price' => ['nullable', 'int'],
         'itinerary' => ['required', 'string'],
         'schedule' => ['required', 'string'],
         'id_location' => ['nullable', 'numeric'],
@@ -174,6 +192,8 @@ class CategoryController extends Controller
         'vehicle' => ['nullable', 'string'],
         'domain' => ['nullable', 'string'],
         'description' => ['required', 'string'],
+        'startdate' => ['required', 'date_format:Y-m-d\TH:i' ],
+        'enddate' => ['required', 'date_format:Y-m-d\TH:i'],
     ]);
 
     $tour = Category::findOrFail($id_tour);
@@ -189,6 +209,9 @@ class CategoryController extends Controller
         'vehicle' => $validatedData['vehicle'],
         'domain' => $validatedData['domain'],
         'description' => $validatedData['description'],
+        'startdate' => Carbon::createFromFormat('Y-m-d\TH:i', $validatedData['startdate']),
+        'enddate' => Carbon::createFromFormat('Y-m-d\TH:i', $validatedData['enddate']),
+
     ]);
     $tour['stock'] = $request->has('stock') ? '1' : '0';
     $tour->id_location = $request->input('id_location') == '4' ? null : $request->input('id_location');
@@ -196,18 +219,13 @@ class CategoryController extends Controller
 
     if ($request->hasFile('image')) {
         $image = $request->file('image');
-        // Kiểm tra lỗi khi tải lên
         if ($image->getError()) {
             return redirect()->back()->with('error', 'Lỗi khi tải lên hình ảnh: ' . $image->getErrorMessage());
         }
         $imageName = time() . '_' . $image->getClientOriginalName();
-        // Đặt tên mới cho hình ảnh để tránh trùng lặp 
         $image->storeAs('public/images', $imageName);
-        // Lưu hình ảnh vào thư mục storage
         $tourData['image'] = $imageName;
-        // Lưu tên tệp vào cơ sở dữ liệu
     } else {
-        // Nếu không có ảnh mới, giữ nguyên ảnh hiện tại
         $tourData['image'] = $tour->image;
     }
 

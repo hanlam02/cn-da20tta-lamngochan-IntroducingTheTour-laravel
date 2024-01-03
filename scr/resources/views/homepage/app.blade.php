@@ -53,15 +53,15 @@
               @foreach($featuredTour as $item)
              
               <li>
-                <a href="{{route('detail',$item->nametour)}}" style="text-decoration: none" class="a1">
-                <img src="{{ asset('storage/images')}}/{{$item->image}}" class="imgapp2" alt="img" style="width:100%">
+                <a href="{{route('detail',$item->id_tour)}}" style="text-decoration: none" class="a1">
+                <img src="{{ asset('storage/images')}}/{{$item->image}}" class="imgapp2" alt="img" style="width:100%; height: 220px;">
                 <div style="margin: 5px 5px 5px 10px;">
                   <p>{{$item->nametour}}</p>
                   <p><i class="far fa-thin fa-clock"></i> {{$item->schedule}}</p>
                   <hr style="width:70%">
                   
                   <div style="display: flex; align-items: center;">
-                    <p style="margin-right: 10px;">{{$item->price}}</p>
+                    <p style="margin-right: 10px;"> Giá: {{$item->price}}</p>
                     <div style="margin-left: auto;">
                       <div  style="display: flex; justify-content: center;">
                       <i class="nav-icon fas fa-map-marker-alt"></i>
@@ -100,12 +100,12 @@
           <div class="wrapSlide">
               <div class="row">
                   <div class="col-lg-4">
-                      <a href="tour.html" class="wrapSpace">
+                      <a href="{{Route('hanoi')}}" class="wrapSpace">
                           <div class="img">
                               <img src="../images/a2.jpg" alt="">
                           </div>
                           <div class="content">
-                              <h2>Hà nội</h2>
+                              <h2>Hà Nội</h2>
                           </div>
                       </a>
                   </div>
@@ -117,7 +117,7 @@
                                       <img src="../images/b7.jpg" alt="">
                                   </div>
                                   <div class="content">
-                                      <h2>Đà nẵng</h2>
+                                      <h2>Đà Nẵng</h2>
                                   </div>
                               </a>
                           </div>
@@ -127,7 +127,7 @@
                                       <img src="../images/b11.png" alt="">
                                   </div>
                                   <div class="content">
-                                      <h2>Hội an</h2>
+                                      <h2>Hội An</h2>
                                   </div>
                               </a>
                           </div>          
@@ -139,7 +139,7 @@
                               <img src="../images/a5.jpg" alt="">
                           </div>
                           <div class="content">
-                              <h2>Phú quốc</h2>
+                              <h2>Phú Quốc</h2>
                           </div>
                       </a>
                   </div>
@@ -149,7 +149,7 @@
                               <img src="../images/a5.jpg" alt="">
                           </div>
                           <div class="content">
-                              <h2>Nha trang</h2>
+                              <h2>Nha Trang</h2>
                           </div>
                       </a>
                   </div>
@@ -159,7 +159,7 @@
                               <img src="../images/a3.jpg" alt="">
                           </div>
                           <div class="content">
-                              <h2>Đà lạt</h2>
+                              <h2>Đà Lạt</h2>
                           </div>
                       </a>
                   </div>
@@ -169,7 +169,7 @@
                               <img src="../images/a5.jpg" alt="">
                           </div>
                           <div class="content">
-                              <h2>Hà nội</h2>
+                              <h2>Ninh Bình</h2>
                           </div>
                       </a>
                   </div>

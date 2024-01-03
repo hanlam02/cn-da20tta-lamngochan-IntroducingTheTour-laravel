@@ -20,7 +20,7 @@
               <!-- general form elements -->
               <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Thêm mới location</h3>
+                 
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
@@ -35,11 +35,8 @@
                       <span class="help-block" style="color: red">{{$message}}</span>
                       @enderror --}}
                       
-                    </div>
-                    
+                    </div>               
                   </div>
-                  <!-- /.box-body -->
-    
                   <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Thêm mới</button>
                   </div>

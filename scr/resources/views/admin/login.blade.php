@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>@yield('title')</title>
+  <title>@yield('login')</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -31,25 +31,27 @@
 </head>
 <body>
   <div class="wrapper">
-    <form action="{{route('login.login')}}">
+    <form action="{{ route('admin.postLogin') }}" method="POST">
+      @csrf
       <h1>Login</h1>
       <div class="input-box">
-        <input type="email" name="email" placeholder="Username" required>
+        <input type="email" name="email" placeholder="Email">
         <i class='bx bxs-user' ></i>
       </div>  
       <div class="input-box">
-        <input type="password" name="password" placeholder="Password" required>
+        <input type="password" name="password" placeholder="Password">
         <i class='bx bxs-lock-alt' ></i>
       </div> 
       <div class="remember-forgot">
         <label><input type="checkbox" name="remember"> Remember me</label>
         <a href="#">Forgot password</a>
       </div> 
+      
       <button type="submit" class="btn">Login</button>
       <div class="register-link">
         <p> Don't have an account?<a href="#"> Register</a></p>
       </div>
-      @csrf
+   
     </form>
   </div> 
 </body>

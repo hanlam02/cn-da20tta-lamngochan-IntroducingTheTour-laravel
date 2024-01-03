@@ -7,16 +7,21 @@
           <div class="box">
             <div class="box-header">
                  <a href="{{route('location.create')}}" class="btn btn-success">Add</a>
-                  <div class="box-tools">
-                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-                  <div class="input-group-btn">
-                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                  </div>
-                </div>
+                 <div class="box-tools">
+                  <form action="{{ route('product.search') }}" method="get" class="input-group">
+                      <input type="text" name="search" class="form-control pull-right" placeholder="Search">
+                      <div class="input-group-btn">
+                          <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                      </div>
+                  </form>
+              </div>
               </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
+              @if($locations->isEmpty())
+              <p>Không tìm thấy địa điểm</p>
+          @else
               <table class="table table-hover">
                 <tbody><tr>
                   <th>STT</th>
@@ -31,7 +36,7 @@
                   <td>
                   <a href="{{route('location.edit', ['id_location' => $location ->id_location])}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i>Edit</a>
                   <a href="{{route('location.delete', ['id_location' => $location ->id_location])}}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i>Delete</a>
-                  </td>
+                </td>
                 </tr>
                 @endforeach
               </tbody></table>
@@ -39,6 +44,7 @@
             <div class="col-md-12">
               {{$locations->links('pagination::bootstrap-4')}}
             </div>
+            @endif  
             <!-- /.box-body -->
           </div>
           <!-- /.box -->

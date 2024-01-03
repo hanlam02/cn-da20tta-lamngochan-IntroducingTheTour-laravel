@@ -25,6 +25,8 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{asset('assets')}}/plugins/summernote/summernote-bs4.css">
   <link rel="stylesheet" href="{{asset('assets')}}/css/styletour.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   {{-- <script src="{{asset('assets')}}/ckeditor5-build-classic-40.1.0/ckeditor5-build-classic/ckeditor.js"></script> --}}
   <script src="http://cdn.ckeditor.com/4.22.1/full/ckeditor.js"></script>
   <!-- Google Font: Source Sans Pro -->
@@ -47,17 +49,6 @@
       <h1>
         @yield('title-page')
       </h1>
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
 

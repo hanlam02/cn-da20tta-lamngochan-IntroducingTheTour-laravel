@@ -15,7 +15,10 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         //
     ];
-
+    protected $routeMiddleware = [
+        // ...
+       
+    ];
     /**
      * Define the application's command schedule.
      *

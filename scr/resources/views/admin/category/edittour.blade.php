@@ -46,7 +46,11 @@
                       <label for="exampleInputEmail1">Hành trình</label>
                       <input type="text" class="form-control" id="itinerary" name="itinerary" value="{{ $tour->itinerary }}">
                       <label for="exampleInputEmail1">Lịch trình</label>
-                      <input type="text" class="form-control" id="schedule" name="schedule" value="{{ $tour->schedule }}">
+                      <input type="text" class="form-control" id="schedule" name="schedule" value="{{ $tour->schedule }}"><br>
+                       <label for="birthdaytime">Khởi hành: </label>
+                      <input type="datetime-local" id="startdate" name="startdate" value="{{ $tour->startdate}}"><br><br>
+                      <label for="birthdaytime">Kết thúc:  </label>
+                      <input type="datetime-local" id="enddate" name="enddate" value="{{ $tour->enddate}}"><br><br>
                       <label for="exampleInputEmail1">Số chỗ</label>
                       <input type="text" class="form-control" id="numberguests" name="numberguests" value="{{ $tour->numberguests }}">
                       <label for="exampleInputEmail1">Phương tiện</label>

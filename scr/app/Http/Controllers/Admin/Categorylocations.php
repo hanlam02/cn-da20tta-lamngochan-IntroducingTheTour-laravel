@@ -28,13 +28,21 @@ class Categorylocations extends Controller
     // {
     //     $this->location = $location;
     // }
-    public function index()
+    public function index(Request $request)
     {
         $locations = Categorylocation::paginate(5);
-        // $location = $this->location->paginate(5);
         return view('admin.category.location', compact('locations'));
     }
 
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+
+        $locations = Categorylocation::where('name_location', 'like', '%' . $search . '%')
+            ->paginate(5);
+
+        return view('admin.category.location', compact('locations'));
+    }
     /**
      * Show the form for creating a new resource.
      *

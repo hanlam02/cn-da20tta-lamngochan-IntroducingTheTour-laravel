@@ -15,11 +15,15 @@ class Homepage extends Controller
         return view('homepage.app',compact('featuredTour','locations'));
     }
 
-    public function detail($nametour){
-        $product = Category::where('nametour',$nametour)->first();
-       // dd($product);
-        return view('homepage.detail',compact('product'));
-    }
+    public function detail($id_tour){
+        $product = Category::where('id_tour', $id_tour)->first();
 
-    
+        $relatedTours = Category::where('domain', $product->domain)
+        ->where('id_tour', '!=', $id_tour)
+        // ->take(3)
+        // ->get()
+        ->paginate(3);
+        $locations = Categorylocation::all();
+        return view('homepage.detail', compact('product', 'relatedTours', 'locations'));
+    }
 }

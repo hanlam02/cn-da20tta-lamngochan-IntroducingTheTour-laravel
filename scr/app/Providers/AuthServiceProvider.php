@@ -16,6 +16,12 @@ class AuthServiceProvider extends ServiceProvider
         // 'App\Model' => 'App\Policies\ModelPolicy',
     ];
 
+    protected $guards = [
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+    ];
     /**
      * Register any authentication / authorization services.
      *

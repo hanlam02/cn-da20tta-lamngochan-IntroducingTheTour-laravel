@@ -26,8 +26,8 @@ class StoreCategoryRequesttour extends FormRequest
         return [
             'nametour' => ['required', 'string'],
             'image' => ['nullable','mimes:jpg,jpeg,png'],
-            'price' => ['required', 'string'],
-            'sale_price' => ['nullable', 'string'], // Kiểm tra định dạng giá tiền
+            'price' => ['required', 'int'],
+            'sale_price' => ['nullable', 'int'], // Kiểm tra định dạng giá tiền
             'itinerary' => ['required', 'string'],
             'schedule' => ['required', 'string'],
             'id_location' => ['nullable', 'numeric'],
@@ -35,6 +35,8 @@ class StoreCategoryRequesttour extends FormRequest
             'vehicle' => ['nullable', 'string'],
             'domain' => ['nullable', 'string'],
             'description' => ['required', 'string'],
+            'startdate' => ['required', 'date_format:Y-m-d\TH:i'],
+            'enddate' => ['required','date_format:Y-m-d\TH:i'],
         ];
     }
 }

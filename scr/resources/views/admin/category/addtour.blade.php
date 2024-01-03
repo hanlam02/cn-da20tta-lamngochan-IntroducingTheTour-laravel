@@ -20,7 +20,7 @@
               <!-- general form elements -->
               <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Thêm mới tour </h3>
+                  {{-- <h3 class="box-title">Thêm mới tour </h3> --}}
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
@@ -45,6 +45,10 @@
                       <input type="text" class="form-control" id="itinerary" name="itinerary"><br>
                       <label for="exampleInputEmail1">Lịch trình</label>
                       <input type="text" class="form-control" id="schedule" name="schedule"><br>
+                      <label for="birthdaytime">Khởi hành: </label>
+                      <input type="datetime-local" id="startdate" name="startdate" ><br><br>
+                      <label for="birthdaytime">Kết thúc:  </label>
+                      <input type="datetime-local" id="enddate" name="enddate"><br><br>
                       <label for="exampleInputEmail1">Số chỗ</label>
                       <input type="text" class="form-control" id="numberguests" name="numberguests"><br>
                       <label for="exampleInputEmail1">Phương tiện</label>
@@ -89,6 +93,48 @@
 <script src="http://cdn.ckeditor.com/4.22.1/full/ckeditor.js"></script>
      <script>
          CKEDITOR.replace('editor1');
+
+         <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Time Local Example</title>
+</head>
+<body>
+
+    <label for="startdate">Chọn ngày và giờ:</label>
+    <input type="datetime-local" id="startdate" name="startdate"><br><br>
+
+    <script>
+        // Hàm kiểm tra và kích hoạt các ngày lớn hơn ngày hiện tại
+        function enableSpecificDates() {
+            // Lấy giá trị ngày giờ hiện tại
+            var currentDate = new Date();
+
+            // Lấy giá trị ngày giờ từ trường nhập
+            var selectedDate = new Date(document.getElementById('startdate').value);
+
+            // So sánh ngày giờ
+            if (selectedDate < currentDate) {
+                // Ngày nhỏ hơn ngày hiện tại, vô hiệu hóa trường nhập
+                document.getElementById('startdate').disabled = true;
+            } else {
+                // Ngày lớn hơn hoặc bằng ngày hiện tại, kích hoạt lại trường nhập
+                document.getElementById('startdate').disabled = false;
+            }
+        }
+
+        // Gán sự kiện onchange để kiểm tra mỗi khi ngày giờ thay đổi
+        document.getElementById('startdate').addEventListener('change', enableSpecificDates);
+
+        // Gọi hàm lần đầu để kiểm tra ngày giờ ban đầu
+        enableSpecificDates();
+    </script>
+
+</body>
+</html>
+
       </script>
 @endsection
 
