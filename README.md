@@ -13,7 +13,8 @@
 
 ## Thông tin dự án
 #### Cơ sở dữ liệu:
-![website_banthietbitinhoc](https://github.com/NgoTanLoi01/cn-da20tta-ngotanloi-ITshop-laravel/assets/112923143/d5019207-967d-4203-a981-b62cab6083ca)
+![image](https://github.com/hanlam02/cn-da20tta-lamngochan-IntroducingTheTour-laravel/assets/130439443/c6714cba-3b9c-4f5a-bf43-43843bebccf6)
+
 
 #### Biểu đồ Use Case tổng quát:
 ![Biểu đồ use case tổng quát CN drawio](https://github.com/NgoTanLoi01/cn-da20tta-ngotanloi-ITshop-laravel/assets/112923143/84d6deb8-e636-48f7-ba2d-9769d1afb652)
