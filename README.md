@@ -1,4 +1,4 @@
-# Chuyên ngành - Lâm Ngọc Hân - DA20TTA - ggIntroducingTheTour - laravel
+# Chuyên ngành - Lâm Ngọc Hân - DA20TTA - IntroducingTheTour - laravel
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 [![Open in Visual Studio Code](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20Visual%20Studio%20Code&labelColor=2c2c32&color=007acc&logoColor=007acc)](https://open.vscode.dev/microsoft/Web-Dev-For-Beginners)
