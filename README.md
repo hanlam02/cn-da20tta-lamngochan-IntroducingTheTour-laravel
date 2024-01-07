@@ -16,16 +16,14 @@
 ![image](https://github.com/hanlam02/cn-da20tta-lamngochan-IntroducingTheTour-laravel/assets/130439443/c6714cba-3b9c-4f5a-bf43-43843bebccf6)
 
 
-#### Biểu đồ Use Case tổng quát:
-![Biểu đồ use case tổng quát CN drawio](https://github.com/NgoTanLoi01/cn-da20tta-ngotanloi-ITshop-laravel/assets/112923143/84d6deb8-e636-48f7-ba2d-9769d1afb652)
-
 #### Giao diện người dùng:
   
-![Giao diện trang chủ](https://github.com/NgoTanLoi01/cn-da20tta-ngotanloi-ITshop-laravel/assets/112923143/9345588e-7731-4162-8404-4d5225b23fc7)
+![image](https://github.com/hanlam02/cn-da20tta-lamngochan-IntroducingTheTour-laravel/assets/130439443/4f157e7e-64cc-4123-8b41-2913a7446fa8)
+
 
 #### Giao diện quản trị:
 
-![Giao diện quản trị](https://github.com/NgoTanLoi01/cn-da20tta-ngotanloi-ITshop-laravel/assets/112923143/01a1ce32-832b-4895-aa75-fe4e798cd937)
+![image](https://github.com/hanlam02/cn-da20tta-lamngochan-IntroducingTheTour-laravel/assets/130439443/7cfeb455-d45d-49f0-beae-6892a233abf4)
 
 
 
@@ -57,6 +55,6 @@
           http://127.0.0.1:8000/
 
 ## Thông tin liên hệ tác giả
-  - Họ tên: Ngô Tấn Lợi
-  - SĐT: 0337120073
-  - Email: ngotanloi2424@gmail.com
+  - Họ tên: Lâm Ngọc Hân
+  - SĐT: 0335029752
+  - Email: ngochanlam1212@gmail.com
