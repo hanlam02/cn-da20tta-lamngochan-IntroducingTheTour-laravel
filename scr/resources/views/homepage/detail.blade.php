@@ -30,10 +30,10 @@
                     <p style="height:20%; background-color: #11d81b; font-weight: bold; font-size: 40px">
                         <span class="span1">Giá:</span>
                         @if($product->sale_price)               
-                            <span style="color: #000;">{{$product->sale_price}}</span>
-                            <span style="text-decoration: line-through; font-size: 20px">{{$product->price}}</span>
+                            <span style="color: #000;">{{ number_format($product->sale_price, 0, '.', '.') }}đ</span>
+                            <span style="text-decoration: line-through; font-size: 20px">{{ number_format($product->price, 0, '.', '.') }}đ</span>
                         @else
-                            {{$product->price}}
+                        {{ number_format($product->price, 0, '.', '.') }}đ
                         @endif
                     </p>
                      <a href="{{route('booktour', $product->id_tour)}}"><button type="button" class="btn-order-tour">đặt tour</button></a>
@@ -68,13 +68,13 @@
                               <div style="display: flex; align-items: center;">
                                   @if ($item->sale_price)
                                       {{-- Nếu có giá khuyến mãi --}}
-                                      <p style="margin-right: 10px; text-decoration: line-through;">{{ $item->price }}</p>
-                                      <p style="color: red; margin-right: 10px;">{{ $item->sale_price }}</p>
+                                      <p style="margin-right: 10px; text-decoration: line-through;">{{ number_format($item->price, 0, '.', '.') }}đ</p>
+                                      <p style="color: red; margin-right: 10px;">{{ number_format($item->sale_price, 0, '.', '.') }}đ</p>
                                   @else
                                       {{-- Nếu không có giá khuyến mãi --}}
-                                      <p style="margin-right: 10px;">{{ $item->price }}</p>
+                                      <p style="margin-right: 10px;">{{ number_format($item->price, 0, '.', '.') }}đ</p>
                                   @endif
-                                  <div style="margin-left: auto;">
+                                    <div style="margin-left: auto;">
                                       <div style="display: flex; justify-content: center;">
                                           <i class="nav-icon fas fa-map-marker-alt"></i>
                                       </div>
@@ -83,21 +83,16 @@
                                       @else
                                           <p>Không có địa điểm</p>
                                       @endif
-                                  </div>
-                              </div>
-                          </div>
-                      </a>
-                  </li>
+                                    </div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
                   {{-- @endif --}}
-              @endforeach
+            @endforeach
           </ul>
-          {{-- <div class="text-center">
-            <a class="btn btn-primary" id="prevBtn">Previous</a>
-            <a class="btn btn-primary" id="nextBtn">Next</a>
-        </div> --}}
         </div>
       </div>
-      
   </section>
         @else
             <div class="col-md-12">

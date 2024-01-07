@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categorybooktour;
 use Illuminate\Http\Request;
+use App\Models\Payment;
+use App\Models\Category;
+use App\Models\contact;
+use Illuminate\Support\Facades\Session;
+use App\Models\passen;
 
 class VNpay extends Controller
 {
@@ -15,7 +21,7 @@ class VNpay extends Controller
         $vnp_OrderType = 'billpayment';
     
         // Lấy tổng tiền từ giỏ hàng
-        $totalAmount = 100000;
+        $totalAmount = isset($_POST['totalPrice']) ? $_POST['totalPrice'] : 0;
         $vnp_Amount = $totalAmount * 100;
     
         // Thông tin thanh toán
@@ -43,7 +49,7 @@ class VNpay extends Controller
             "vnp_Locale" => $vnp_Locale,
             "vnp_OrderInfo" => $vnp_OrderInfo,
             "vnp_OrderType" => $vnp_OrderType,
-            "vnp_ReturnUrl" => Route('booktour.store'),
+            "vnp_ReturnUrl" => $vnp_Returnurl,
             "vnp_TxnRef" => $vnp_TxnRef,
         );
     
@@ -67,18 +73,86 @@ class VNpay extends Controller
             $vnpSecureHash = hash_hmac('sha512', $hashdata, $vnp_HashSecret);
             $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
         }
+        
+    //Lưu thông itn liên hệ
+        $name = $request->input('customername');
+        $phone = $request->input('phone');
+        $email = $request->input('email');
+        $address = $request->input('address');
+        $note = $request->input('note');
+
+        // Tạo mới đối tượng Contact và lưu vào cơ sở dữ liệu
+        $contact = new contact();
+        $contact->name = $name;
+        $contact->phone = $phone;
+        $contact->email = $email;
+        $contact->adress = $address;
+        $contact->save();
+
+        $id_contact = $contact->id_contact;
+
+    //Lưu thôn gtin hành khách
+    $thongTinLienHe = Session::get('thongtinlienhe', []);
+    if ($thongTinLienHe && isset($thongTinLienHe['hanh_khach']) && !empty($thongTinLienHe['hanh_khach'])) {
+        foreach ($thongTinLienHe['hanh_khach'] as $hanhKhach) {
+            // Tạo đối tượng Passenger và lưu thông tin hành khách
+            passen::create([
+                'id_contact' => $contact->id_contact,
+                'name'=> $hanhKhach['full_name'],
+                'gender' => $hanhKhach['gender'],
+                'Type_guest' => $hanhKhach['age'],
+                'note' => $hanhKhach['guest_note'],
+            ]);
+        }
+    }   
+    //lưu payment
+    $order = new payment();
+    $order->vnp_TxnRef = $vnp_TxnRef;
+    $order->vnp_amount = $totalAmount;
+    $order->save();
+
+    $id_vnpay = $order->id_vnpay;
+    //Lưu đặt tour
     
-        $returnData = array(
+    $booking = new Categorybooktour([
+        'id_tour' => $request->input('idtour'), 
+        'id_contact' => $contact->id_contact,
+        'id_vnpay'=>$order->id_vnpay, 
+        'quantityAdult' => $request->input('QuantityAdult'), 
+        'quantityChild' => $request->input('QuantityChild'), 
+        'quantityBaby' => $request->input('QuantityBaby'), 
+        'total' => $request->input('totalPrice'), 
+        'status' => '1', 
+    ]);
+    $booking->save();
+
+   // Cập nhật thông tin số lượng chỗ của tour trong cơ sở dữ liệu
+    $tour = Category::find($request->input('idtour'));
+    $tour->numberguests -= $request->input('QuantityAdult');
+    $tour->numberguests -= $request->input('QuantityChild');
+    $tour->numberguests -= $request->input('QuantityBaby');
+    $tour->save();
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    $returnData = array(
             'code' => '00',
             'message' => 'success',
             'data' => $vnp_Url
         );
-    
+        
         if (isset($_POST['redirect'])) {
             header('Location: ' . $vnp_Url);
             die();
         } else {
-            
             echo json_encode($returnData);
         }
     }

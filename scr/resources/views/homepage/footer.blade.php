@@ -2,8 +2,8 @@
 <footer class="footer-distributed">
   <div class="nav1">
             <div class="footer-left" style="width:500px">
-                <a href="navbar-brand"> <img class="logo" src="../images/Logo.jpg" style="width: 100px; height: 100px;"></a>
-
+                <a href="navbar-brand"> <img class="logo" src="../images/Logo Design2.png" style="width: 100px; height: 100px; margin-left: 40px"></a>
+                <br>
                 <p class="footer-links">
                     <a>Home</a> |
                     

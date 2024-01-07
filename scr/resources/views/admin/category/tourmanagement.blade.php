@@ -7,7 +7,7 @@
           
           <div class="box">
             <div class="box-header">
-                 <a href="{{route('tour.create')}}" class="btn btn-success">Thêm mới danh mục</a>
+                 <a href="{{route('tour.create')}}" class="btn btn-success">Thêm mới</a>
                  
                  
                  <div class="box-tools">
@@ -32,7 +32,7 @@
                 <div style="padding: 15px">
                   <p class="p1">{{$tours->nametour}}</p>
                   <p class="p1">lịch trình: {{$tours->schedule}}</p>
-                  <p class="p1">Giá: {{$tours->price}}</p>
+                  <p class="p1">Giá: {{ number_format($tours->price, 0, '.', '.') }}đ</p>
                   <p class="p1">số chỗ: {{$tours->numberguests}}</p>
 
                   <p class="p1">Trạng thái:

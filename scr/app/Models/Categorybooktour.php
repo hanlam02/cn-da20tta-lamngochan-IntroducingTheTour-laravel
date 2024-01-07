@@ -12,7 +12,17 @@ class Categorybooktour extends Model
     protected $table ='booktour';
     protected $primaryKey = 'id_booktour';
   
-    protected $fillable = ['customer_name', 'email', 'phone', 'address', 'note', 'quantity', 'total', 'id_tour', 'payment', 'startdate', 'enddate'];
+    protected $fillable = [
+                            'id_tour',
+                            'id_contact',
+                            'id_vnpay',
+                            'quantityAdult',
+                            'quantityChild',
+                            'quantityBaby',
+                            'total',
+                            'status',
+                            'created_at',
+                            'updated_at',
+                           ];
     
-
 }

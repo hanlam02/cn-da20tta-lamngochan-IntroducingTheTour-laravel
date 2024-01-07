@@ -62,11 +62,11 @@
                                 <div style="display: flex; align-items: center;">
                                     @if ($item->sale_price)
                                         {{-- Nếu có giá khuyến mãi --}}
-                                        <p style="margin-right: 10px; text-decoration: line-through;">{{ $item->price }}</p>
-                                        <p style="color: red; margin-right: 10px;">{{ $item->sale_price }}</p>
+                                        <p style="margin-right: 10px; text-decoration: line-through;">{{ number_format($item->price, 0, '.', '.') }}đ</p>
+                                        <p style="color: red; margin-right: 10px;">{{ number_format($item->sale_price, 0, '.', '.') }}đ</p>
                                     @else
                                         {{-- Nếu không có giá khuyến mãi --}}
-                                        <p style="margin-right: 10px;">{{ $item->price }}</p>
+                                        <p style="margin-right: 10px;">{{ number_format($item->price, 0, '.', '.') }}đ</p>
                                     @endif
                                     <div style="margin-left: auto;">
                                         <div style="display: flex; justify-content: center;">

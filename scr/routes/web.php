@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\Listbooktour;
 use App\Http\Controllers\Admin\search;
 use App\Http\Controllers\Api\Homepage;
 use App\Http\Controllers\Api\intro;
+use App\Http\Controllers\Api\information;
 use App\Http\Controllers\Api\Booking;
 use App\Http\Controllers\Api\seach;
 use App\Http\Controllers\Api\BookingController;
@@ -49,7 +50,7 @@ Route::post('/admin/login', 'App\Http\Controllers\AdminController@postLogin')->n
 //Route::middleware(['admin.auth'])->group(function () {
 Route::get('/admin/index', 'App\Http\Controllers\AdminController@index')->name('admin.index');
 // });
-
+Route::get('/monthly-revenue-chart', [AdminController::class, 'monthlyRevenueChart']);
 
 
 
@@ -65,6 +66,7 @@ Route::get('/searchde', 'App\Http\Controllers\Api\seach@searchde')->name('detail
 Route::get('/searcht', 'App\Http\Controllers\Admin\CategoryController@searcht')->name('global.search');
 
 Route::get('/revenue', 'App\Http\Controllers\Admin\Revenue@index')->name('revenue');
+Route::get('/calculateRevenueForPeriod', 'App\Http\Controllers\Admin\Revenue@calculateRevenueForPeriod')->name('calculateRevenueForPeriod');
 
 //Route::get('/Add-categorylocation',[Categorylocations::class, 'create'])->name('categorylocations.create');
 //Location    
@@ -149,6 +151,8 @@ Route::get('/cancel-booking/{id_booktour}', [Booktour::class, 'cancelBooking'])-
 //     ]);
 
 // });
+
+Route::get('/informationbooktour', [information::class,'index'])->name('informationbooktour');
 Route::get('/listbooktour', [Listbooktour::class, 'index'])->name('listbooktour');
 Route::get('/confirm-booking/{confirmation_code}', 'App\Http\Controllers\Api\BookingController@confirmBooking')->name('confirm-booking');
 

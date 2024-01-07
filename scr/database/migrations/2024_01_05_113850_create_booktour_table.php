@@ -17,14 +17,14 @@ class CreateBooktourTable extends Migration
             $table->id('id_booktour');
             $table->unsignedBigInteger('id_tour');
             $table->foreign('id_tour')->references('id_tour')->on('tours');
-            $table->string('customer_name')->unique();
-            $table->string('email')->unique();
-            $table->integer('phone')->unique();
-            $table->string('address')->unique();
-            $table->string('note')->nullable();
-            $table->integer('quantity');
+            $table->unsignedBigInteger('id_contact');
+            $table->foreign('id_contact')->references('id_contact')->on('contactinfo');
+            $table->unsignedBigInteger('id_vnpay');
+            $table->foreign('id_vnpay')->references('id_vnpay')->on('payment');
+            $table->integer('quantityAdult');
+            $table->integer('quantityChild');
+            $table->integer('quantityBaby');
             $table->integer('total')->unique();
-            $table->integer('deposit')->unique();//đặt cọc
             $table->integer('status');
             $table->timestamps();
         });

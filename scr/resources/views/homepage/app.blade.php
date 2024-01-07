@@ -61,7 +61,7 @@
                   <hr style="width:70%">
                   
                   <div style="display: flex; align-items: center;">
-                    <p style="margin-right: 10px;"> Giá: {{$item->price}}</p>
+                    <p style="margin-right: 10px;"> Giá: {{ number_format($item->price, 0, '.', '.') }}đ</p>
                     <div style="margin-left: auto;">
                       <div  style="display: flex; justify-content: center;">
                       <i class="nav-icon fas fa-map-marker-alt"></i>

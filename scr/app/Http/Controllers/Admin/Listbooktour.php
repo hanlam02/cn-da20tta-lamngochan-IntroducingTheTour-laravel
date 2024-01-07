@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Categorybooktour;
+use App\Models\contact;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class Listbooktour extends Controller
@@ -15,8 +17,10 @@ class Listbooktour extends Controller
      */
     public function index()
     {
-        $list = Categorybooktour::paginate(10);
-        return view('admin.category.listbooktour', compact('list'));
+            $listbt = Categorybooktour::paginate(10);
+            $listlh = contact::all();
+            $listt = Category::all();
+            return view('admin.category.listbooktour', compact('listbt','listlh', 'listt'));
     }
 
     /**

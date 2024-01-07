@@ -51,16 +51,16 @@
                                                 </p>
                                                 <p><span class="span1">Phương tiện:</span> {{ $product->vehicle }}</p>
                                                 <p><span class="span1">Số chỗ còn lại: </span><span
-                                                        class="sochoconlai">{{ $product->numberguests }}</span>/
+                                                        class="sochoconlai"></span>
                                                     {{ $product->numberguests }}</p>
                                                 <p><span class="span1">Giá:</span>
                                                     @if ($product->sale_price)
                                                         <span
-                                                            style="color: #000; font-size: 16px">{{ $product->sale_price }}</span>
+                                                            style="color: #000; font-size: 16px">{{ number_format($product->sale_price, 0, '.', '.') }}đ</span>
                                                         <span
-                                                            style="text-decoration: line-through; font-size: 12px">{{ $product->price }}</span>
+                                                            style="text-decoration: line-through; font-size: 12px">{{ number_format($product->price, 0, '.', '.') }}đ</span>
                                                     @else
-                                                        {{ $product->price }}
+                                                    {{ number_format($product->price, 0, '.', '.') }}đ
                                                     @endif
                                                 </p>
                                             </div>
@@ -74,7 +74,7 @@
                                 </div>
                             @endif
                             <br>
-                            <div style="border: 1px solid black">
+                            {{-- <div style="border: 1px solid black">
                                 <ul class="mda-list-design">
                                     <li>
                                         <span style="color:#FF0000">Các khoản phí phát sinh (nếu có) như: phụ thu dành
@@ -87,13 +87,20 @@
                                             sinh, phiếu xác nhận booking của quý khách sẽ không có hiệu lực.</span>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> --}}
                             <br>
 
                             <input type="hidden" name="trap" id="trap" value="9iquhab84jqdqtujla59gvdm56">
+                            <input type="hidden" name="nametour" value="{{ $product->nametour }}">
                             <input type="hidden" name="id_tour" value="{{ $product->id_tour }}">
                             <input type="hidden" name="startdate" value="{{ $product->startdate }}">
                             <input type="hidden" name="enddate" value="{{ $product->enddate }}">
+                            <input type="hidden" name="vehicle" value="{{ $product->vehicle }}">
+                            <input type="hidden" name="id_tour" value="{{ $product->id_tour }}">
+                            <input type="hidden" name="schedule" value="{{ $product->schedule }}">
+                            <input type="hidden" name="price" value="{{ $product->price }}">
+                            <input type="hidden" name="sale_price" value="{{ $product->sale_price }}">
+                        
                             <div class="mda-tilte-3" style="text-align: center; font-size: 30px">
                                 <span class="mda-tilte-name"><i class="fa fa-info-circle" aria-hidden="true"></i> Thông
                                     Tin Liên Hệ</span>
@@ -146,6 +153,7 @@
                                             <table class="list-table" id="list-guests" style="width: 100%;">
                                                 <thead>
                                                     <tr>
+                                                        <th>STT</th>
                                                         <th style="min-width: 150px;">Họ tên</th>
                                                         <th style="min-width: 85px;">Giới tính</th>
                                                         <th style="min-width: 150px;">Loại khách</th>
@@ -154,10 +162,17 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr price="1986000" type="1" class="row-guest type-1">
-                                                        <!-- Các ô dữ liệu của dòng (row) -->
+                                                        <td>
+                                                            <div class="form-st" style="margin-top: 1px">
+                                                                <div class="form-group has-success">
+                                                                <input type="text" id="sttInput" name="ss" class="form-control" value="1" style="width: 40px; text-align: center; border: none;">
+                                                    
+                                                                </div>
+                                                            </div>
+                                                        </td>
                                                         <td>
                                                             <div class="form-group has-success">
-                                                                <input type="text" name="full_name[]" class="form-control" placeholder="Nhập họ tên..." data-bv-field="full_name[]">
+                                                                <input type="text" name="full_name[]" class="form-control" placeholder="Nhập họ tên..." data-bv-field="full_name[]" required>
                                                                 <small class="help-block" data-bv-validator="notEmpty" data-bv-for="full_name[]" data-bv-result="VALID" style="display: none;">Họ tên là bắt buộc</small>
                                                             </div>
                                                         </td>
@@ -194,17 +209,17 @@
                                             <button class="btn button-green btn-add-guest pull-right" type="button" onclick="addGuest()">Thêm</button>
                                         </div>
                                       </div>
-                                    <div class="form-group col-md-12">
+                                    {{-- <div class="form-group col-md-12">
                                         <div class="txtTotal">Tổng giá tiền: <span id="sumary"
                                                 name="total"></span> <span>đ</span><br>
                                             <div id="discount-price"></div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
-                            <div> 
+                            {{-- <div> 
                                 <button class="them" type="button">tiếp theo</button>
-                            </div>
+                            </div> --}}
                             <input type="hidden" name="total" id="sumary" value="{{ $product->price * 1 }}">
                             {{-- <input type="hidden" name="codeDay" id="codeDay" value="05-04-2018">
                         <input type="hidden" name="customerlistjson" id="customerlist-json">
@@ -215,9 +230,11 @@
                         <input type="hidden" name="scheduleid" value="5484r2631424e4c4y2d4y2"> --}}
 
                             <div class="clear"></div>
-                            <button type="submit" name="redirect" class="btn btn-outline-primary-2 btn-order btn-block">
-                                Thanh toán VNPAY
+                            <br>
+                            <button type="submit" name="redirect" class="btn btn-outline-primary-2 btn-order btn-block" style="width: 200px; background-color: lawngreen; margin-left: auto; font-size: 17px">
+                                Tiếp theo
                             </button>
+                            <br>
                     </div>
                     </form>
                     {{-- <form action="{{ url('/vnpay_payment') }}" method="POST">
@@ -245,10 +262,18 @@
 
 
     <script>
-          function addGuest() {
+         
+
+    function addGuest() {
         var newRow = $("#list-guests tbody tr:first").clone(); // Clone dòng đầu tiên
-        newRow.find('input[name^="full_name"]').val('');
-        $("#list-guests tbody").append(newRow); // Thêm dòng mới vào cuối
+            newRow.find('input[name^="full_name"]').val('');
+            $("#list-guests tbody").append(newRow);
+
+            // Tăng giá trị sau khi thêm dòng mới
+            var inputElement = document.getElementById('sttInput');
+            var currentSttValue = parseInt(inputElement.value);
+            var newSttValue = currentSttValue + 1;
+            inputElement.value = newSttValue; // Thêm dòng mới vào cuối
     }
 
     function removeGuest() {
@@ -259,8 +284,6 @@
             alert("Không thể xóa nữa.");
         }
     }
-
-
 
 
         $(document).ready(function() {

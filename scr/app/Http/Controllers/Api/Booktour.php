@@ -121,28 +121,28 @@ class Booktour extends Controller
 
 
 
-    public function searchBookTour(Request $request)
-    {
-        $phoneNumber = $request->input('phone');
-        //$booktour = Categorybooktour::where('phone', $phoneNumber)->firstOrFail();
-        $booktour = Categorybooktour::where('phone', $phoneNumber)->get();
-        return view('homepage.search', ['booktour' => $booktour]);
+    // public function searchBookTour(Request $request)
+    // {
+    //     $phoneNumber = $request->input('phone');
+    //     //$booktour = Categorybooktour::where('phone', $phoneNumber)->firstOrFail();
+    //     $booktour = Categorybooktour::where('phone', $phoneNumber)->get();
+    //     return view('homepage.search', ['booktour' => $booktour]);
 
         
-    }
+    // }
 
-    public function cancelBooking($id_booktour) {
-        $booktour = Categorybooktour::find($id_booktour);
-        if ($booktour && $booktour->status == 0) {
-            $booktour->status = 1; // hoặc bất kỳ giá trị khác để chỉ ra trạng thái đã hủy
-            $booktour->save();
-            return redirect()->back()->with('success', 'Tour đã được hủy thành công.');
-        } elseif ($booktour && $booktour->status != 0) {
-            return redirect()->back()->with('error', 'Tour đã được hủy trước đó.');
-        } else {
-            return redirect()->back()->with('error', 'Không tìm thấy đơn đặt tour.');
-        }
-    }
+    // public function cancelBooking($id_booktour) {
+    //     $booktour = Categorybooktour::find($id_booktour);
+    //     if ($booktour && $booktour->status == 0) {
+    //         $booktour->status = 1; // hoặc bất kỳ giá trị khác để chỉ ra trạng thái đã hủy
+    //         $booktour->save();
+    //         return redirect()->back()->with('success', 'Tour đã được hủy thành công.');
+    //     } elseif ($booktour && $booktour->status != 0) {
+    //         return redirect()->back()->with('error', 'Tour đã được hủy trước đó.');
+    //     } else {
+    //         return redirect()->back()->with('error', 'Không tìm thấy đơn đặt tour.');
+    //     }
+    // }
 
     
 }

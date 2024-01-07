@@ -26,6 +26,8 @@ class CategoryController extends Controller
         
     }
 
+
+
         public function searcht(Request $request)
         {
             $search = $request->input('search');

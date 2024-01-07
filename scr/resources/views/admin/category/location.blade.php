@@ -6,7 +6,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-                 <a href="{{route('location.create')}}" class="btn btn-success">Add</a>
+                 <a href="{{route('location.create')}}" class="btn btn-success">Thêm mới</a>
                  <div class="box-tools">
                   <form action="{{ route('product.search') }}" method="get" class="input-group">
                       <input type="text" name="search" class="form-control pull-right" placeholder="Search">
