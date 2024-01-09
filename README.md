@@ -31,7 +31,7 @@
   - Cài đặt PHP phiên bản 7.3 trở lên và Composer
   - Tải dự án từ github
 
-          git clone https://github.com/NgoTanLoi01/cn-da20tta-ngotanloi-ITshop-laravel.git
+          git clone https://github.com/hanlam02/cn-da20tta-lamngochan-IntroducingTheTour-laravel
   - Cài đặt phần còn thiếu của dự án
 
           composer install
